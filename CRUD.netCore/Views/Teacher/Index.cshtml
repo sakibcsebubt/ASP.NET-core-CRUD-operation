@@ -1,0 +1,70 @@
+﻿@model CRUD.netCore.Models.Viewmodel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a class="btn btn-primary justify-content-center" asp-action="Export" asp-controller="Teacher">Export</a>
+
+    <div class="col-sm-2"><a id="btnPrint" class="btn btn-success" href="../Teacher/Export" target="_blank">Excel Sheet Print </a></div>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+              ID
+            </th>
+            <th>
+              Full Name
+            </th>
+           
+            <th>
+               DESIGNation
+            </th>
+            <th>
+               Address
+            </th>
+            <th>
+              Salery
+            </th>
+            <th>
+               School
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Teachers) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.T_FName)  @Html.DisplayFor(modelItem => item.T_LName)
+            </td>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.T_Designation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.T_Address)
+            </td>
+            <td>
+                @item.T_Salery
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.T_School)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id}) |
+               
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
