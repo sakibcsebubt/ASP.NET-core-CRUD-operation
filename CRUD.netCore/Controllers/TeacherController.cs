@@ -72,7 +72,7 @@ namespace CRUD.netCore.Controllers
         {
             if (!ModelState.IsValid)
                 return View(teacher);
-
+            var Data = "data ";
             _context.TeacherList.Update(teacher);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
